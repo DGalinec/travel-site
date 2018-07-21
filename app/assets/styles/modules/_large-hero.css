@@ -1,0 +1,43 @@
+.large-hero {
+    position: relative;
+
+    &__text-content {
+        /* **** POSITIONING THE TEXT **** */
+        /* center the text horizontally and vertically accross the image */
+        /* we will not use the CSS background image functionnality because we want the image */
+        /* to be an actual image element because we want the image later on to be responsive */
+        position: absolute;
+        top: 50%; /* text starts at the vertical center of the image */
+        transform: translateY(-50%); /* we move up the text by 50% of its vertical size so that it is centered */
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__title {
+        /* **** STYILING THE <h1> tag **** */
+        font-weight: 300;
+        color: $mainBlue;
+        font-size: 4.8rem;
+        margin: 0;
+    }
+
+    &__subtitle {
+        /* **** STYILING THE <h2> tag **** */
+        font-weight: 300;
+        color: $mainBlue;
+        font-size: 2.9rem;
+        margin: 0;
+    }
+
+    &__description {
+        /* **** STYILING THE <p> tag **** */
+        font-weight: 100;
+        color: #FFF;
+        font-size: 1.875rem;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
