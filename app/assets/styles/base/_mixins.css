@@ -15,3 +15,11 @@
         @mixin-content;
     }
 }
+
+@define-mixin clearfix {
+    &::after {           /* this CSS selector will add "" after all of */
+        content: "";     /* the content of the main <div class="row">  */
+        clear: both;
+        display: table;
+    }
+}

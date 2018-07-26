@@ -1,0 +1,14 @@
+.generic-content-container {
+    p {
+        line-height: 1.65; /* space between lines */
+        margin: 1.8rem 0; /* top-bottom: 1.8rem, left-righr: 0 */
+
+        @mixin atSmall {
+            font-size: 1.125rem;
+        }
+    }
+
+    p a { /* any links that live in a paragraph */
+        font-weight: 700;
+    }
+}
