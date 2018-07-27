@@ -1,0 +1,38 @@
+.feature-item {
+    /* smallest screen devices */
+    position: relative; /* parent position is relative */
+    padding-bottom: 2.5rem;
+
+    /* larger than 530px screen devices */
+    @mixin atSmall {
+        padding-left: 94px;
+    }
+
+    &__icon {
+        /* smallest screen devices */
+        display: block;
+        margin: 0 auto;
+
+        /* larger than 530px screen devices */
+        @mixin atSmall {
+            position: absolute;  /* it is absolute relatively to parent since we declared parent position as relative */
+            left: 0;
+        }
+    }
+
+    &__title {
+        /* smallest screen devices */
+        font-size: 1.6rem;
+        font-weight: 300;
+        margin-top: .7em;
+        margin-bottom: .8rem;
+        text-align: center;
+
+        /* larger than 530px screen devices */
+        @mixin atSmall {
+            text-align: left;
+            margin-top: 1em;
+            font-size: 1.875rem;
+        }
+    }    
+}
