@@ -576,14 +576,49 @@ a {
         max-width: 976px; /* 976px = width of the image. This will center the image on the page */
     }
 
+.wrapper--no-padding-until-medium {
+        /* smaller than 800px screen devices */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+/* larger than 800px screen devices */
+
+@media (min-width: 800px) {
+
+.wrapper--no-padding-until-medium {
+            padding-left: 18px;
+            padding-right: 18px
+    }
+    }
+
+.wrapper--no-padding-until-large {
+        /* smaller than 1010px screen devices */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+
+.wrapper--no-padding-until-large {
+            padding-left: 18px;
+            padding-right: 18px
+    }
+    }
+
 .wrapper .wrapper {           /* any 'wrapper' nesting in another 'wrapper' */
         padding-left: 0; /* should not have any horizontal padding     */
         padding-right: 0;
     }
 
 .wrapper--b-margin {
+        /* smaller than 530px screen devices */
         margin-bottom: 1rem;
     }
+
+/* larger than 530px screen devices */
 
 @media (min-width: 530px) {
 
@@ -593,11 +628,12 @@ a {
     }
 
 .page-section {
+    /* smaller than 800px screen devices */
     /* this class will have the responsibility to add top and bottom padding for each section */
     padding: 1.2rem 0;
 }
 
-/* top-bottom padding = 1.2rem, left-right padding = 0 */
+/* larger than 800px screen devices */
 
 @media (min-width: 800px) {
 
@@ -606,9 +642,56 @@ a {
 }
     }
 
+/* top-bottom padding = 1.2rem, left-right padding = 0 */
+
+.page-section--no-b-padding-until-medium {
+        /* smaller than 800px screen devices */
+        padding-bottom: 0;
+    }
+
+/* larger than 800px screen devices */
+
+@media (min-width: 800px) {
+
+.page-section--no-b-padding-until-medium {
+            padding-bottom: 4.5rem
+    }
+    }
+
+.page-section--no-b-padding-until-large {
+        /* smaller than 1010px screen devices */
+        padding-bottom: 0;
+    }
+
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+
+.page-section--no-b-padding-until-large {
+            padding-bottom: 4.5rem
+    }
+    }
+
 .page-section--blue { /* block with blue background and white text */
         background-color: #2f5572;
         color: #FFF;
+    }
+
+.page-section--testimonials {
+        /* smaller than 800px screen devices */
+        background-color: #e0e6ef;
+        
+    }
+
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+
+.page-section--testimonials {
+            background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+            background-size: cover /* perfectly covers the containing <div> */
+        
+    }
     }
 
 .headline {
@@ -665,10 +748,18 @@ a {
         margin-top: 0;
     }
 
+/* smaller than 800px screen devices */
+
 .row::after {           /* this CSS selector will add "" after all of */
         content: "";     /* the content of the main <div class="row">  */
         clear: both;
         display: table;
+    }
+
+/* clear float of children elements */
+
+.row--t-padding {
+        padding-top: 80px;
     }
 
 .row--gutters {
@@ -679,6 +770,10 @@ a {
         margin-right: -100px;
     }
 
+.row--gutters-small {
+        margin-right: -45px;
+    }
+
 .row--gutters > div {
         padding-right: 65px; /* right margin of the righest sub<div> element will be zero: -65 + 65 px */
     }
@@ -687,9 +782,15 @@ a {
         padding-right: 100px;
     }
 
+.row--gutters-small > div {
+        padding-right: 45px;
+    }
+
 .row__b-margin-until-medium {
         margin-bottom: 1rem;
     }
+
+/* larger than 800px screen devices */
 
 @media (min-width: 800px) {
         .row__b-margin-until-medium {
@@ -720,6 +821,69 @@ a {
         }
     }
 
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+        .row__b-margin-until-large {
+            margin-bottom: 0;
+        }
+
+        .row__large-4 {
+            float: left;
+            width: 33.33%;
+        }
+
+        .row__large-4--larger {
+            width: 37%;
+        } 
+    
+        .row__large-6 {
+            float: left;
+            width: 50%;
+        }
+
+        .row__large-8 {
+            float: left;
+            width: 66.66%;
+        }
+
+        .row__large-8--smaller {
+            width: 63%;
+        }
+    }
+
+/* make the testimonial text boxes of the same height */
+
+/* larger than 800px screen devices */
+
+@media (min-width: 800px) {
+
+.row--equal-height-at-medium {
+            display: flex
+    }
+    }
+
+.row--equal-height-at-medium > div {
+            float: none;
+            display: flex;
+        }
+
+/* make the testimonial text boxes of the same height */
+
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+
+.row--equal-height-at-large {
+            display: flex
+    }
+    }
+
+.row--equal-height-at-large > div {
+            float: none;
+            display: flex;
+        }
+
 .generic-content-container p {
         font-weight: 300;
         line-height: 1.65; /* space between lines */
@@ -740,10 +904,13 @@ a {
     }
 
 .section-title {
+    /* smallest screen devices */
     font-size: 2.55rem;
     font-weight: 300;
     text-align: center;
 }
+
+/* larger than 530px screen devices */
 
 @media (min-width: 530px) {
 
@@ -756,16 +923,25 @@ a {
         font-weight: 500;
     }
 
+.section-title--blue {
+        color: #2f5572;
+    }
+
 .section-title__icon {
+        /* smallest screen devices */
         display: block;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: .6rem;
     }
 
+/* larger than 530px screen devices */
+
 @media (min-width: 530px) {
 
 .section-title__icon {
+            position: relative;
+            top: 8px;
             margin-right: .5rem;
             margin-left: 0;
             margin-bottom: 0;
@@ -822,4 +998,54 @@ a {
             margin-top: 1em;
             font-size: 1.875rem
     }
+    }
+
+.testimonial {
+    /* smaller than 1010px screen devices */
+    background-color: rgba(255, 255, 255, .8); /* transaprency: .8 */
+    padding: 0 18px 1px 18px; /* top right bottom left */
+    margin-bottom: 98px;
+}
+
+/* larger than 1010px screen devices */
+
+@media (min-width: 1010px) {
+
+.testimonial {
+        padding: 0 1.8125rem 1px 1.8125rem; /* top right bottom left */
+        margin-bottom: 0
+}
+    }
+
+.testimonial--last {
+        margin-bottom: 0; /* take out bottom margin of last testimonial */
+    }
+
+.testimonial__photo {
+        border-radius: 80px; /* radius of half of the image width / height will create a circle */
+        border: 6px solid rgba(255, 255, 255, .8);
+        overflow: hidden; /* otherwise image will display out of the border and we won't see any circle */
+        width: 160px; /* true width of the image file */
+        height: 160px; /* trus height of the image file */
+        margin: 0 auto -80px auto; /* center the image: top, right, bottom, left */
+                                 /* the bottom margin of -80px is to move up the text below the image */
+        /* move the image up out of its container <div> */
+        position: relative;
+        top: -80px;
+    }
+
+.testimonial__title {
+        color: #2f5572;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+.testimonial__subtitle {
+        color: #d59541;
+        text-align: center;
+        font-weight: 400;
+        font-size: 0.9375rem;
+        margin: .25rem 0 1rem 0;
     }

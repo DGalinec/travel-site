@@ -11,14 +11,40 @@
         max-width: 976px; /* 976px = width of the image. This will center the image on the page */
     }
 
+    &--no-padding-until-medium {
+        /* smaller than 800px screen devices */
+        padding-left: 0;
+        padding-right: 0;
+
+        /* larger than 800px screen devices */
+        @mixin atMedium {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+
+    &--no-padding-until-large {
+        /* smaller than 1010px screen devices */
+        padding-left: 0;
+        padding-right: 0;
+
+        /* larger than 1010px screen devices */
+        @mixin atLarge {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+
     .wrapper {           /* any 'wrapper' nesting in another 'wrapper' */
         padding-left: 0; /* should not have any horizontal padding     */
         padding-right: 0;
     }
 
     &--b-margin {
+        /* smaller than 530px screen devices */
         margin-bottom: 1rem;
 
+        /* larger than 530px screen devices */
         @mixin atSmall {
             margin-bottom: 3.875rem;
         }

@@ -1,13 +1,47 @@
 .page-section {
+    /* smaller than 800px screen devices */
     /* this class will have the responsibility to add top and bottom padding for each section */
     padding: 1.2rem 0; /* top-bottom padding = 1.2rem, left-right padding = 0 */
 
+    /* larger than 800px screen devices */
     @mixin atMedium {
         padding: 4.5rem 0;
+    }
+
+    &--no-b-padding-until-medium {
+        /* smaller than 800px screen devices */
+        padding-bottom: 0;
+
+        /* larger than 800px screen devices */
+        @mixin atMedium {
+            padding-bottom: 4.5rem;
+        }
+    }
+
+    &--no-b-padding-until-large {
+        /* smaller than 1010px screen devices */
+        padding-bottom: 0;
+
+        /* larger than 1010px screen devices */
+        @mixin atLarge {
+            padding-bottom: 4.5rem;
+        }
     }
 
     &--blue { /* block with blue background and white text */
         background-color: $mainBlue;
         color: #FFF;
+    }
+
+    &--testimonials {
+        /* smaller than 800px screen devices */
+        background-color: #e0e6ef;
+        
+        /* larger than 1010px screen devices */
+        @mixin atLarge {
+            background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+            background-size: cover; /* perfectly covers the containing <div> */
+        }
+        
     }
 }
