@@ -1177,3 +1177,28 @@ a {
         height: 42px;
         background-position: 36.69752421959096% 45.792307692307695%;
     }
+
+.site-footer {
+    background-color: #2f5572;
+    color: #FFF;
+    padding: .5rem 0; /* vertical horizontal*/
+    text-align: center;
+}
+
+.site-footer__text {
+        /* when screen smaller than 800px  */
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 200;
+    }
+
+/* when screen larger than 800px  */
+
+@media (min-width: 800px) {
+
+.site-footer__text {
+            display: inline;
+            margin-bottom: 0;
+            margin-right: 1.4rem
+    }
+    }
