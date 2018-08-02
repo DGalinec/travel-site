@@ -1,0 +1,26 @@
+.primary-nav {
+    
+    &--pull-right {
+        float: right;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        @mixin clearfix;
+    }
+
+    li {
+        list-style: none; /* remove the bullets */
+        float: left; /* display all list element on one line */
+        padding-right: 20px;
+    }
+
+    a {
+        color: #FFF; /* link text white */
+        text-decoration: none; /* no more underline */
+        font-weight: 300;
+        display: block;
+        padding: 12px 0;
+    }
+}

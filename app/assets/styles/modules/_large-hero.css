@@ -18,6 +18,12 @@
         left: 0;
         width: 100%;
         text-align: center;
+        padding-top: 88px; /* to compensate for the height on the image taken by the navigation menu */
+
+        /* when screen larger than 800px */
+        @mixin atMedium {
+            padding-top: 60px; /* to compensate for the height on the image taken by the navigation menu */
+        }
     }
 
     &__title {

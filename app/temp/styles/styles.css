@@ -487,6 +487,16 @@ a {
         left: 0;
         width: 100%;
         text-align: center;
+        padding-top: 88px; /* to compensate for the height on the image taken by the navigation menu */
+    }
+
+/* when screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.large-hero__text-content {
+            padding-top: 60px /* to compensate for the height on the image taken by the navigation menu */
+    }
     }
 
 .large-hero__title {
@@ -1201,4 +1211,116 @@ a {
             margin-bottom: 0;
             margin-right: 1.4rem
     }
+    }
+
+.site-header {
+    /* screen smaller than 800px */
+    position: absolute; /* we want the navigation menu to overflow the large-hero image / section */
+    z-index: 2; /* will put the navigation menu on top of the large-hero image / section */
+    width: 100%; /* navigation menu to fill the entire width of the screen */
+    padding: 10px 0;
+}
+
+/* screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.site-header {
+        background-color: rgba(47,85,114, .3) /* background with transparent (.3 = 30%) blue */
+}
+    }
+
+.site-header__btn-container {
+        float: right; /* move 'Get in Touch' button to the right */
+    }
+
+.site-header__logo {
+        /* when screen smaller than 800px */
+        position: absolute; /* logo is now out of the navigation bar flow */
+        top: 0;
+        background-color: #2f5572;
+        padding: 25px 36px;
+        left: 50%;
+        -webkit-transform: translateX(-50%) scale(0.8);
+                transform: translateX(-50%) scale(0.8); /* scale the image at 0.8 = 80% of its original size */
+        -webkit-transform-origin: 50% 0;
+                transform-origin: 50% 0; /* to keep the 80% image centered horizontally and to the top of the screen vertically */
+    }
+
+/* when screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.site-header__logo {
+            left: auto;
+            -webkit-transform: translateX(0);
+                    transform: translateX(0)
+    }
+    }
+
+.site-header__logo__graphic {
+        text-indent: -9999px; /* we want to hide the text below logo image (text has been created for SEO purposes) */
+    }
+
+.site-header__menu-icon {
+        /* when screen smalller than 800px */
+        /* display an icon where to click for opening the menu on smaller screens */
+        width: 20px;
+        height: 20px;
+        background-color: #FFF;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+/* when screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.site-header__menu-icon {
+            display: none
+    }
+    }
+
+.site-header__menu-content {
+        /* when screen smaller than 800px */
+        display: none; /* menu bar is hidden */
+    }
+
+/* when screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.site-header__menu-content {
+            display: block /* menu bar is visible */
+    }
+    }
+
+.primary-nav--pull-right {
+        float: right;
+    }
+
+.primary-nav ul {
+        margin: 0;
+        padding: 0;
+    }
+
+.primary-nav ul::after {           /* this CSS selector will add "" after all of */
+        content: "";     /* the content of the main <div class="row">  */
+        clear: both;
+        display: table;
+    }
+
+.primary-nav li {
+        list-style: none; /* remove the bullets */
+        float: left; /* display all list element on one line */
+        padding-right: 20px;
+    }
+
+.primary-nav a {
+        color: #FFF; /* link text white */
+        text-decoration: none; /* no more underline */
+        font-weight: 300;
+        display: block;
+        padding: 12px 0;
     }
