@@ -1,7 +1,19 @@
 .primary-nav {
+
+    padding-top: 10px; /* padding for mobile devices screens */
+
+    /* screen larger than 800px */
+    @mixin atMedium {
+        padding-top: 0;
+    }
     
     &--pull-right {
-        float: right;
+        /* default behaviour */
+
+        /* screen larger than 800px */
+        @mixin atMedium {
+            float: right;
+        }
     }
 
     ul {
@@ -11,16 +23,43 @@
     }
 
     li {
+        /* default behaviour */
         list-style: none; /* remove the bullets */
-        float: left; /* display all list element on one line */
-        padding-right: 20px;
+        display: inline-block;
+        padding-right: 7px;
+
+        /* screen larger than 800px */
+        @mixin atMedium {
+            padding-right: 20px;
+            float: left; /* display all list element on one line */
+            display: block;
+        }
+    }
+
+    li:last-child { /* final item in the list */
+        padding-right: 0;
+
+        /* screen larger than 800px */
+        @mixin atMedium {
+            padding-right: 20px;
+        }
     }
 
     a {
+        /* default behaviour */
         color: #FFF; /* link text white */
         text-decoration: none; /* no more underline */
         font-weight: 300;
         display: block;
-        padding: 12px 0;
+        padding: 5px 8px;
+        font-size: .8rem; /* smaller font-size for mobile devices */
+        background-color: rgba($mainBlue, .5);
+
+        /* screens larger than 800px */
+        @mixin atMedium {
+            font-size: 1rem;
+            padding: 12px 0;
+            background-color: transparent;
+        }
     }
 }

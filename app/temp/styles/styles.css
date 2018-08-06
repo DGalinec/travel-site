@@ -1219,7 +1219,14 @@ a {
     z-index: 2; /* will put the navigation menu on top of the large-hero image / section */
     width: 100%; /* navigation menu to fill the entire width of the screen */
     padding: 10px 0;
+    transition: background-color .3s ease-out;
 }
+
+/* gradually transition to the new value over the course of a certain period of time: 0.3 seconds  */
+
+.site-header--is-expanded {
+        background-color: rgba(47,85,114, .55);
+    }
 
 /* screen larger than 800px */
 
@@ -1230,12 +1237,23 @@ a {
 }
     }
 
+/* when element background changes, we want to */
+
 .site-header__btn-container {
-        float: right; /* move 'Get in Touch' button to the right */
+        /* default behaviour */
+    }
+
+/* when screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.site-header__btn-container {
+            float: right /* move 'Get in Touch' button to the right */
+    }
     }
 
 .site-header__logo {
-        /* when screen smaller than 800px */
+        /* default behaviour */
         position: absolute; /* logo is now out of the navigation bar flow */
         top: 0;
         background-color: #2f5572;
@@ -1263,15 +1281,55 @@ a {
     }
 
 .site-header__menu-icon {
-        /* when screen smalller than 800px */
+        /* default behaviour */
         /* display an icon where to click for opening the menu on smaller screens */
         width: 20px;
-        height: 20px;
-        background-color: #FFF;
+        height: 19px;
         position: absolute;
+        z-index: 10; /* put icon button on the very top of the page */
         top: 10px;
         right: 10px;
     }
+
+.site-header__menu-icon__top { /* drawing top bar of the mobile device menu icon */
+            position: absolute;
+            top: 0;  /* position inside menu-icon */
+            left: 0; /* position inside menu-icon */
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0; /* change the default center of the top bar (50% 50%) into the top-left corner */
+            transition: -webkit-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            transition: transform .3s ease-out, -webkit-transform .3s ease-out; /* gradually change the top bar into a 'X' bar */
+        }
+
+.site-header__menu-icon__middle { /* drawing top bar of the mobile device menu icon */
+            position: absolute;
+            top: 8px;  /* position inside menu-icon */
+            left: 0; /* position inside menu-icon */
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            -webkit-transform-origin: 0 50%;
+                    transform-origin: 0 50%; /* horizontal = 0 - vertical = perfect center = 50% */
+            transition: all .3s ease-out; /* gradually change all properties of the middle bar */
+        }
+
+.site-header__menu-icon__bottom { /* drawing top bar of the mobile device menu icon */
+            position: absolute;
+            bottom: 0px;  /* position inside menu-icon */
+            left: 0; /* position inside menu-icon */
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            -webkit-transform-origin: 0 100%;
+                    transform-origin: 0 100%; /* change the default center of the bottom bar (50% 50%) into the bottom-left corner */
+            transition: -webkit-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            transition: transform .3s ease-out, -webkit-transform .3s ease-out; /* gradually change the bottom bar into a 'X' bar */
+        }
 
 /* when screen larger than 800px */
 
@@ -1282,9 +1340,34 @@ a {
     }
     }
 
+/* changing the horizontal bars of the 'hamburger' menu on mobile devices into a 'X' */
+
+.site-header__menu-icon--close-x .site-header__menu-icon__top {
+            -webkit-transform: rotate(45deg) scaleX(1.25);
+                    transform: rotate(45deg) scaleX(1.25); /* rotate the top bar 45deg to the right and increase its width by 25% */
+        }
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+            opacity: 0;
+            -webkit-transform: scaleX(0);
+                    transform: scaleX(0); /* reduce the width of the middle bar to 0px */
+        }
+
+.site-header__menu-icon--close-x .site-header__menu-icon__bottom {
+            -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+                    transform: rotate(-45deg) scaleX(1.25) translateY(1px); /* rotate the top bar 45deg to the right and increase its width by 25% */
+        }
+
 .site-header__menu-content {
-        /* when screen smaller than 800px */
-        display: none; /* menu bar is hidden */
+        /* default behaviour */
+        opacity: 0; /* menu bar is hidden with opacitiy: 0; instead of display: none; */
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2); /* zoom-in effect: increase the menu content +20% */
+        transition: all .3s ease-out; /* we gradually fade in the menu when user will click on the icon */
+        position: relative; /* to be able to use z-index */
+        z-index: -10; /* menu for mobile device put in the back for preventing to accidentaly click on it when hidden */
+        padding-top: 90px;
+        text-align: center;
     }
 
 /* when screen larger than 800px */
@@ -1292,12 +1375,48 @@ a {
 @media (min-width: 800px) {
 
 .site-header__menu-content {
-            display: block /* menu bar is visible */
+            opacity: 1; /* menu bar is visible */
+            z-index: 1;
+            padding-top: 0;
+            -webkit-transform: scale(1);
+                    transform: scale(1) /* zoom-in effect is only for mobile devices */
     }
     }
 
+.site-header__menu-content--is-visible {
+            opacity: 1; /* we gradually fade the menu for mobile devices to an opacity of 1 instead of simply using display: block; */
+            z-index: 1; /* put menu on the top */
+            -webkit-transform: scale(1);
+                    transform: scale(1); /* content back to its natural size */
+        }
+
+.primary-nav {
+
+    padding-top: 10px;
+}
+
+/* screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.primary-nav {
+        padding-top: 0
+}
+    }
+
+/* padding for mobile devices screens */
+
 .primary-nav--pull-right {
-        float: right;
+        /* default behaviour */
+    }
+
+/* screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.primary-nav--pull-right {
+            float: right
+    }
     }
 
 .primary-nav ul {
@@ -1312,15 +1431,54 @@ a {
     }
 
 .primary-nav li {
+        /* default behaviour */
         list-style: none; /* remove the bullets */
-        float: left; /* display all list element on one line */
-        padding-right: 20px;
+        display: inline-block;
+        padding-right: 7px;
+    }
+
+/* screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.primary-nav li {
+            padding-right: 20px;
+            float: left; /* display all list element on one line */
+            display: block
+    }
+    }
+
+.primary-nav li:last-child { /* final item in the list */
+        padding-right: 0;
+    }
+
+/* screen larger than 800px */
+
+@media (min-width: 800px) {
+
+.primary-nav li:last-child {
+            padding-right: 20px
+    }
     }
 
 .primary-nav a {
+        /* default behaviour */
         color: #FFF; /* link text white */
         text-decoration: none; /* no more underline */
         font-weight: 300;
         display: block;
-        padding: 12px 0;
+        padding: 5px 8px;
+        font-size: .8rem; /* smaller font-size for mobile devices */
+        background-color: rgba(47,85,114, .5);
+    }
+
+/* screens larger than 800px */
+
+@media (min-width: 800px) {
+
+.primary-nav a {
+            font-size: 1rem;
+            padding: 12px 0;
+            background-color: transparent
+    }
     }

@@ -21,4 +21,12 @@ gulp.task('watch', function() {
     watch('./app/temp/styles/styles.css', function() {
         browserSync.reload();
     });
+
+    watch('./app/assets/scripts/**/*.js', function() {
+        gulp.start('scriptsRefresh');
+    });
 });
+
+gulp.task('scriptsRefresh', ['scripts'], function() {
+    browserSync.reload();
+})
