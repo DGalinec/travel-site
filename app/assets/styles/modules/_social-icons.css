@@ -1,0 +1,27 @@
+.social-icons {
+    text-align: center;
+
+    &__icon {
+        background-color: $mainOrange;
+        display: inline-block; /* all of the social media icons will sit on a single line */
+        margin: 0 5px 10px 5px; /* margins between icons in less than 530px devices */
+        width: 33%; /* 2 icons per row in devices with screens less than 530px */
+        height: 72px;
+        position: relative;
+
+        /* for screens larger than 530px */
+        @mixin atSmall {
+            width: 72px;
+            margin: 0 5px;
+        }
+
+        .icon {
+            display: block; /* the automated width and height values from our automated sprite setup can actually be applied to the element */
+            /* center icons in their orange squares */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* put the icon left 50% of its own width and put the icon up 50% of its own height */
+        }
+    }
+}

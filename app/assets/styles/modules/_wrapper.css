@@ -11,6 +11,10 @@
         max-width: 976px; /* 976px = width of the image. This will center the image on the page */
     }
 
+    &--narrow {
+        max-width: 470px;
+    }
+
     &--no-padding-until-medium {
         /* smaller than 800px screen devices */
         padding-left: 0;

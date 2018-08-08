@@ -586,6 +586,10 @@ a {
         max-width: 976px; /* 976px = width of the image. This will center the image on the page */
     }
 
+.wrapper--narrow {
+        max-width: 470px;
+    }
+
 .wrapper--no-padding-until-medium {
         /* smaller than 800px screen devices */
         padding-left: 0;
@@ -935,6 +939,11 @@ a {
 
 .section-title--blue {
         color: #2f5572;
+    }
+
+.section-title--less-margin { /* class modifier */
+        margin-bottom: 1.3rem;
+        margin-top: 0;
     }
 
 .section-title__icon {
@@ -1514,3 +1523,95 @@ a {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+
+.modal { /* full screen overlay */
+    position: fixed; /* content does not scroll with the page */
+    z-index: 5; /* on top of any currently existing content */
+    background-color: rgba(255, 255, 255, 0.94); /* transparent white */
+    /* take the ful screen: top, bottom, left, right = 0 */
+    top:0 ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0; /* modal is hidden when page loads */
+    visibility: hidden; /* links of the modal are not accessible anymore */
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2); /* zoom in effect when opening the modal page */
+    transition: all .3s ease-out;
+}
+
+/* make a smooth transition when opening modal page */
+
+.modal--is-visible {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+
+.modal__inner { /* rule for vertically centering our modal section in the browser */
+        position: absolute;
+        width: 100%; /* horizontal full width */
+        top: 50%; /* push down from the top 50% of its height to center it */
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+    }
+
+.modal__description {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 1.65;
+    }
+
+.modal__close { /* styling of 'X' page closing */
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        -webkit-transform: scaleX(1.2);
+                transform: scaleX(1.2);
+        -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0; /* 100% right horizontally and top corner vertically --> change the transform origin to keep the 15px margin right by expanding the 'X' to the left */
+        color: #2f5572;
+        cursor: pointer;
+    }
+
+/* change curser to a pointer when passing over 'X' */
+
+.modal__close:hover {
+            color: #d59541;
+        }
+
+.social-icons {
+    text-align: center;
+}
+
+.social-icons__icon {
+        background-color: #d59541;
+        display: inline-block; /* all of the social media icons will sit on a single line */
+        margin: 0 5px 10px 5px; /* margins between icons in less than 530px devices */
+        width: 33%; /* 2 icons per row in devices with screens less than 530px */
+        height: 72px;
+        position: relative;
+    }
+
+/* for screens larger than 530px */
+
+@media (min-width: 530px) {
+
+.social-icons__icon {
+            width: 72px;
+            margin: 0 5px
+    }
+    }
+
+.social-icons__icon .icon {
+            display: block; /* the automated width and height values from our automated sprite setup can actually be applied to the element */
+            /* center icons in their orange squares */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%); /* put the icon left 50% of its own width and put the icon up 50% of its own height */
+        }

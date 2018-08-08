@@ -1,0 +1,49 @@
+.modal { /* full screen overlay */
+    position: fixed; /* content does not scroll with the page */
+    z-index: 5; /* on top of any currently existing content */
+    background-color: rgba(255, 255, 255, 0.94); /* transparent white */
+    /* take the ful screen: top, bottom, left, right = 0 */
+    top:0 ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0; /* modal is hidden when page loads */
+    visibility: hidden; /* links of the modal are not accessible anymore */
+    transform: scale(1.2); /* zoom in effect when opening the modal page */
+    transition: all .3s ease-out; /* make a smooth transition when opening modal page */
+
+    &--is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+    &__inner { /* rule for vertically centering our modal section in the browser */
+        position: absolute;
+        width: 100%; /* horizontal full width */
+        top: 50%; /* push down from the top 50% of its height to center it */
+        transform: translateY(-50%);
+    }
+
+    &__description {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 1.65;
+    }
+
+    &__close { /* styling of 'X' page closing */
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        transform: scaleX(1.2);
+        transform-origin: 100% 0; /* 100% right horizontally and top corner vertically --> change the transform origin to keep the 15px margin right by expanding the 'X' to the left */
+        color: $mainBlue;
+        cursor: pointer; /* change curser to a pointer when passing over 'X' */
+
+        &:hover {
+            color: $mainOrange;
+        }
+    }
+}
