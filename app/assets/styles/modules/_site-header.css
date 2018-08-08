@@ -13,7 +13,12 @@
 
     /* screen larger than 800px */
     @mixin atMedium {
+        position: fixed; /* will lock the menu bar on the top of the screen for larger screen devices */
         background-color: rgba($mainBlue, .3); /* background with transparent (.3 = 30%) blue */
+
+        &--dark {
+            background-color: rgba(23, 51, 72, .85);
+        }
     }
 
     &__btn-container {
@@ -34,11 +39,16 @@
         left: 50%;
         transform: translateX(-50%) scale(0.8); /* scale the image at 0.8 = 80% of its original size */
         transform-origin: 50% 0; /* to keep the 80% image centered horizontally and to the top of the screen vertically */
-
+        transition: transform .3s ease-out;
+        
         /* when screen larger than 800px */ 
         @mixin atMedium {
             left: auto;
             transform: translateX(0);
+
+            .site-header--dark & { /* select .site-header--logo only when .site-header--dark is used */
+                transform: scale(.57); /* reduce the size of the company logo when scrolling dowm */
+            }
         }
     }
 
