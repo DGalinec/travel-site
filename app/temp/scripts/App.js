@@ -11404,6 +11404,8 @@ var StickyHeader = function () {
     function StickyHeader() {
         _classCallCheck(this, StickyHeader);
 
+        /* 'refreshWaypoints()' method */
+        this.lazyImages = (0, _jquery2.default)(".lazyload"); /* selects all element on a page that have a class 'lazyload' */
         /* 'createHeaderWaypoint()' method */
         this.siteHeader = (0, _jquery2.default)(".site-header"); /* property that points towards the site header DOM element */
         this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title"); /* we will draw a darker background-color menu bar when reaching this DOM element */
@@ -11414,9 +11416,29 @@ var StickyHeader = function () {
         this.createPageSectionWaypoints();
         /* 'addSmoothScrolling()' method will use the 'headerLinks' variable already created for the 'createPageSectionWaypoints()' method */
         this.addSmoothScrolling();
+        /* 'refreshWaypoints()' method tells Waypoints to refresh its measurements everytime a new image is lazy loaded */
+        this.refreshWaypoints();
     }
 
+    /* Lazy Loading is causing our custom Waypoints scroll events to fire at the wrong times */
+    /* Why? since we have implemented Lazy Loading, our Waypoints are being triggered too early as we scroll down */
+    /* When the page first loads, Waypoints immediately takes note of the vertical positionning of the elements */
+    /* that it's watching. For instance, 'the testimonials section is 6,000 pixels down from the top of the page'. */
+    /* The problem is that when Waypoints makes that measurement, Lazy Images haven't loaded in yet. */
+    /* And that '6,000 pixels' measurement becomes outdated as soon as Lazy images get loaded in and begin */
+    /* taking up vertical space. Fixing this problem is vey simple. All we need to do is to tell Waypopints */
+    /* to refresh its measurements everytime a new image is lazyloaded in. */
+
+
     _createClass(StickyHeader, [{
+        key: 'refreshWaypoints',
+        value: function refreshWaypoints() {
+            this.lazyImages.on('load', function () {
+                /* on the 'load' event for any of the lazyImages */
+                Waypoint.refreshAll(); /* let's refresh the main Waypoint object */
+            });
+        }
+    }, {
         key: 'addSmoothScrolling',
         value: function addSmoothScrolling() {
             /* we apply smooth scrolling to each navigation menu link */
