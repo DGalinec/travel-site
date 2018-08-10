@@ -96,28 +96,28 @@
     } 
 
     /* make the testimonial text boxes of the same height */
-    &--equal-height-at-medium {
+    .flexbox &--equal-height-at-medium {
         /* larger than 800px screen devices */
         @mixin atMedium {
             display: flex;
         }
 
         & > div {
-            float: none;
-            display: flex;
+            float: none;   /* remove ‘float’ and use Flexbox instead */
+            display: flex; /* Flexbox layout */
         }
     }
 
     /* make the testimonial text boxes of the same height */
-    &--equal-height-at-large {
+    .flexbox &--equal-height-at-large {
         /* larger than 1010px screen devices */
         @mixin atLarge {
             display: flex;
         }
 
         & > div {
-            float: none;
-            display: flex;
+            float: none;   /* remove ‘float’ and use Flexbox instead */
+            display: flex; /* Flexbox layout */
         }
     }
 }

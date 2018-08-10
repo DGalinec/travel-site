@@ -47,7 +47,7 @@
             transform: translateX(0);
 
             .site-header--dark & { /* select .site-header--logo only when .site-header--dark is used */
-                transform: scale(.57); /* reduce the size of the company logo when scrolling dowm */
+                transform: scale(.56); /* reduce the size of the company logo when scrolling dowm */
             }
         }
     }

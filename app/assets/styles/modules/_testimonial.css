@@ -19,7 +19,7 @@
         border: 6px solid rgba(255, 255, 255, .8);
         overflow: hidden; /* otherwise image will display out of the border and we won't see any circle */
         width: 160px; /* true width of the image file */
-        height: 160px; /* trus height of the image file */
+        height: 160px; /* true height of the image file */
         margin: 0 auto -80px auto; /* center the image: top, right, bottom, left */
                                  /* the bottom margin of -80px is to move up the text below the image */
         /* move the image up out of its container <div> */

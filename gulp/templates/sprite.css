@@ -8,6 +8,11 @@
     .icon {
         background-image: url('/assets/images/sprites/{{{sprite}}}');
     }
+
+    .no-svg .icon { /* code to be executed in case browser cannot read SVG files */
+        background-image: url('/assets/images/sprites/{{#replaceSvgWithPng}}{{{sprite}}}{{/replaceSvgWithPng}}');
+    }
+
     {{/first}}
 
     /* loop through all icons.svg files */
