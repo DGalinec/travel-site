@@ -40,7 +40,7 @@
         /* larger than 1010px screen devices */
         @mixin atLarge {
             &.lazyloaded { /* when lazysizes package will change the lazyload class name into lazyloaded the background page will be loaded */
-                background: url('/assets/images/testimonials-bg.jpg') top center no-repeat;
+                background: url('../../assets/images/testimonials-bg.jpg') top center no-repeat;
                 background-size: cover; /* perfectly covers the containing <div> */
             }
         } 
